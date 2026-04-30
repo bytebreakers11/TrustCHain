@@ -22,6 +22,16 @@ Instead of relying on a centralized database that can be edited or tampered with
 
 ---
 
+## 📸 Screenshots
+
+| Dashboard Interface | Live Map & Tracking |
+| :---: | :---: |
+| <img src="screenshots/dashboard.png" width="400" alt="Dashboard UI" /> | <img src="screenshots/tracking.png" width="400" alt="Map Tracking UI" /> |
+
+*(Drop your screenshots into the `screenshots` folder and name them `dashboard.png` and `tracking.png` to have them appear here!)*
+
+---
+
 ## 🏗️ Architecture Diagram
 
 ```mermaid
