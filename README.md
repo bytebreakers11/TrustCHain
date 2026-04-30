@@ -24,11 +24,15 @@ Instead of relying on a centralized database that can be edited or tampered with
 
 ## 📸 Screenshots
 
-| Dashboard Interface | Live Map & Tracking |
-| :---: | :---: |
-| <img src="screenshots/dashboard.png" width="400" alt="Dashboard UI" /> | <img src="screenshots/tracking.png" width="400" alt="Map Tracking UI" /> |
-
-*(Drop your screenshots into the `screenshots` folder and name them `dashboard.png` and `tracking.png` to have them appear here!)*
+<div align="center">
+  <img src="screenshots/img1.png" width="400" />
+  <img src="screenshots/img2.png" width="400" />
+  <img src="screenshots/img3.png" width="400" />
+  <img src="screenshots/img4.png" width="400" />
+  <img src="screenshots/img5.png" width="400" />
+  <img src="screenshots/img6.png" width="400" />
+  <img src="screenshots/img7.png" width="400" />
+</div>
 
 ---
 
