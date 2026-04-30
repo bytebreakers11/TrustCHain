@@ -25,13 +25,32 @@ Instead of relying on a centralized database that can be edited or tampered with
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="screenshots/img1.png" width="400" />
-  <img src="screenshots/img2.png" width="400" />
-  <img src="screenshots/img3.png" width="400" />
-  <img src="screenshots/img4.png" width="400" />
-  <img src="screenshots/img5.png" width="400" />
-  <img src="screenshots/img6.png" width="400" />
-  <img src="screenshots/img7.png" width="400" />
+  <h3>1. Dashboard Overview</h3>
+  <img src="screenshots/img1.png" width="800" />
+  <br><br>
+  
+  <h3>2. Shipment Registration & Handoff</h3>
+  <img src="screenshots/img2.png" width="800" />
+  <br><br>
+
+  <h3>3. Public Consumer View (Product Passport)</h3>
+  <img src="screenshots/img3.png" width="800" />
+  <br><br>
+
+  <h3>4. Vendor Deep Audit Timeline</h3>
+  <img src="screenshots/img4.png" width="800" />
+  <br><br>
+
+  <h3>5. Live Route Mapping Integration</h3>
+  <img src="screenshots/img5.png" width="800" />
+  <br><br>
+
+  <h3>6. AI Shelf-Life Predictor</h3>
+  <img src="screenshots/img6.png" width="800" />
+  <br><br>
+
+  <h3>7. Quality Score & Compliance Checks</h3>
+  <img src="screenshots/img7.png" width="800" />
 </div>
 
 ---
