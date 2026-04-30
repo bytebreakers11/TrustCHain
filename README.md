@@ -25,7 +25,7 @@ Instead of relying on a centralized database that can be edited or tampered with
 ## 📸 Screenshots
 
 <div align="center">
-  <h3>1. Dashboard Overview</h3>
+  <h3>Shipment Interface</h3>
   <img src="screenshots/img1.png" width="800" />
   <br><br>
   
