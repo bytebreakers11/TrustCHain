@@ -196,14 +196,40 @@ async function handleSearch() {
     elements.twinContainer.style.display = 'flex';
     let isCritical = false;
     let score = 100;
+    
+    // AI Predictive Variables
+    let originalExpiryDate = null;
+    let predictedExpiryDate = null;
 
-    if (productInfo && handoffs.length > 0) {
-      handoffs.forEach(h => {
-        if (h.temperature < productInfo.min || h.temperature > productInfo.max) {
-          isCritical = true;
-          score -= 25; // Penalty per violation
-        }
-      });
+    if (productInfo) {
+      // Treat the first handoff (or current time) as the Manufacturing Date
+      const mfgTimestamp = handoffs.length > 0 ? handoffs[0].timestamp : Date.now();
+      originalExpiryDate = new Date(mfgTimestamp + (productInfo.life * 24 * 60 * 60 * 1000));
+      predictedExpiryDate = new Date(originalExpiryDate.getTime());
+
+      if (handoffs.length > 0) {
+        handoffs.forEach(h => {
+          if (h.temperature < productInfo.min || h.temperature > productInfo.max) {
+            isCritical = true;
+            score -= 25; // Penalty per violation
+            
+            // AI Logic: Subtract 15% of total shelf life for every severe temperature violation
+            const penaltyMs = (productInfo.life * 24 * 60 * 60 * 1000) * 0.15;
+            predictedExpiryDate = new Date(predictedExpiryDate.getTime() - penaltyMs);
+          }
+        });
+      }
+      
+      // Update AI UI
+      document.getElementById('originalExpiry').innerText = originalExpiryDate.toLocaleDateString();
+      
+      if (score < 100) {
+        document.getElementById('predictedExpiry').innerText = predictedExpiryDate.toLocaleDateString() + " ⚠️";
+        document.getElementById('predictedExpiry').style.color = "#f43f5e"; // Red
+      } else {
+        document.getElementById('predictedExpiry').innerText = predictedExpiryDate.toLocaleDateString() + " (Optimal)";
+        document.getElementById('predictedExpiry').style.color = "#10b981"; // Green
+      }
     }
     
     if (score < 0) score = 0;
