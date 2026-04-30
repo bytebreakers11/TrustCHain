@@ -1,0 +1,101 @@
+Medicine Name,Min Temp (°C),Max Temp (°C),Product Life (days)
+Paracetamol,15,30,365
+Ibuprofen,15,30,365
+Aspirin,15,30,730
+Metformin,15,30,180
+Atorvastatin,15,30,365
+Amlodipine,15,30,730
+Losartan,15,30,180
+Omeprazole,15,30,730
+Pantoprazole,15,30,180
+Cetirizine,15,30,730
+Levocetirizine,15,30,365
+Montelukast,15,30,365
+Azithromycin,15,30,180
+Amoxicillin,15,30,180
+Clopidogrel,15,30,180
+Rosuvastatin,15,30,365
+Simvastatin,15,30,365
+Enalapril,15,30,180
+Ramipril,15,30,730
+Furosemide,15,30,180
+Spironolactone,15,30,180
+Hydrochlorothiazide,15,30,730
+Warfarin,15,30,365
+Digoxin,15,30,730
+Propranolol,15,30,730
+Atenolol,15,30,365
+Bisoprolol,15,30,365
+Carvedilol,15,30,180
+Nifedipine,15,30,365
+Verapamil,15,30,365
+Diltiazem,15,30,365
+Glimepiride,15,30,365
+Glibenclamide,15,30,365
+Pioglitazone,15,30,730
+Sitagliptin,15,30,365
+Vildagliptin,15,30,180
+Linagliptin,15,30,730
+Canagliflozin,15,30,730
+Dapagliflozin,15,30,730
+Empagliflozin,15,30,365
+Levothyroxine,15,30,730
+Methimazole,15,30,730
+Carbimazole,15,30,180
+Calcium Carbonate,15,30,180
+Vitamin D3,15,30,730
+Vitamin B12,15,30,730
+Folic Acid,15,30,180
+Iron Tablets,15,30,365
+Zinc Tablets,15,30,365
+Magnesium Tablets,15,30,365
+Potassium Chloride,15,30,365
+Sodium Bicarbonate,15,30,180
+ORS Tablets,15,30,365
+Cefixime,15,30,730
+Ceftriaxone,15,30,180
+Meropenem,15,30,365
+Vancomycin,15,30,730
+Linezolid,15,30,365
+Oseltamivir,15,30,180
+Acyclovir,15,30,730
+Favipiravir,15,30,365
+Hydroxychloroquine,15,30,180
+Chloroquine,15,30,180
+Rifaximin,15,30,180
+Domperidone,15,30,730
+Ondansetron,15,30,365
+Metoclopramide,15,30,365
+Loperamide,15,30,730
+Rabeprazole,15,30,365
+Esomeprazole,15,30,365
+Ketoconazole,15,30,180
+Fluconazole,15,30,180
+Itraconazole,15,30,730
+Clotrimazole,15,30,180
+Terbinafine,15,30,180
+Risperidone,15,30,730
+Olanzapine,15,30,730
+Quetiapine,15,30,365
+Haloperidol,15,30,730
+Diazepam,15,30,180
+Lorazepam,15,30,365
+Alprazolam,15,30,365
+Sertraline,15,30,730
+Fluoxetine,15,30,365
+Paroxetine,15,30,180
+Escitalopram,15,30,730
+Duloxetine,15,30,730
+Venlafaxine,15,30,365
+Gabapentin,15,30,730
+Pregabalin,15,30,180
+Topiramate,15,30,365
+Lamotrigine,15,30,180
+Levetiracetam,15,30,730
+Phenytoin,15,30,365
+Carbamazepine,15,30,365
+Ethambutol,15,30,180
+Isoniazid,15,30,730
+Rifampicin,15,30,730
+Pyrazinamide,15,30,180
+Tenofovir,15,30,365

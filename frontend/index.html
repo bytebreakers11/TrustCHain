@@ -1,0 +1,142 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustChain | Blockchain Provenance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Leaflet Map Library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>TrustChain</h1>
+      <p class="subtitle">Immutable Tracking for Perishable Goods</p>
+    </header>
+
+    <div class="wallet-bar">
+      <div>
+        <span id="statusDot" class="status-dot"></span>
+        <span id="walletAddress" style="color: var(--text-muted)">Not Connected</span>
+      </div>
+      <button id="connectBtn" style="width: auto">Connect Wallet</button>
+    </div>
+
+    <div class="grid">
+      <!-- ── Left Column: Controls ── -->
+      <div class="controls">
+        <!-- Create Shipment -->
+        <div class="card" style="margin-bottom: 2rem">
+          <h2>📦 Create Shipment</h2>
+          <div class="form-group">
+            <label>Shipment ID</label>
+            <input type="text" id="shipmentId" placeholder="e.g. SHIP-2024-001">
+          </div>
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="productName" placeholder="e.g. Pharmaceutical Batch A">
+          </div>
+          <button id="createBtn">Register on Ledger</button>
+        </div>
+
+        <!-- Record Handoff -->
+        <div class="card">
+          <h2>🛡️ Record Handoff</h2>
+          <div class="form-group">
+            <label>Target ID</label>
+            <input type="text" id="handoffId" placeholder="Enter Shipment ID">
+          </div>
+          <div class="form-group">
+            <label>Current Location</label>
+            <input type="text" id="location" placeholder="e.g. Frankfurt Cold Storage">
+          </div>
+          <div class="form-group">
+            <label>Temperature (°C)</label>
+            <input type="number" id="temperature" step="0.1" placeholder="e.g. 2.4">
+          </div>
+          <button id="recordBtn" class="secondary" style="margin-top: 1rem;">Log Proof of Condition</button>
+        </div>
+      </div>
+
+      <!-- ── Right Column: Tracking Feed ── -->
+      <div class="tracking">
+        <div class="card tracking-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2>🔍 Track Journey</h2>
+            <div id="roleBadge" style="display: none;">
+              <span id="roleText" style="background: var(--primary); color: var(--bg); padding: 0.2rem 0.7rem; border-radius: 1rem; font-weight: bold; font-size: 0.7rem; letter-spacing: 1px;">
+                VETTING PARTNER
+              </span>
+            </div>
+          </div>
+
+          <div class="search-bar">
+            <div class="form-group" style="display: flex; gap: 10px">
+              <input type="text" id="searchId" placeholder="Search by ID...">
+              <button id="searchBtn" style="width: 100px">Track</button>
+            </div>
+          </div>
+
+          <div id="shipmentInfo" style="margin-bottom: 2rem; display: none;">
+            <p id="infoProduct" style="font-weight: 600; font-size: 1.2rem; margin-bottom: 4px"></p>
+            <p id="infoCreator" style="color: var(--text-muted); font-size: 0.8rem"></p>
+            
+            <div class="dual-view-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+              <!-- Left: Digital Twin -->
+              <div id="twinContainer" class="twin-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                <div id="digitalTwin" class="digital-twin">
+                  <div class="twin-core"></div>
+                  <div class="twin-glow"></div>
+                </div>
+                <p id="twinStatus" class="twin-status" style="margin-top: 15px;">Synchronizing...</p>
+              </div>
+
+              <!-- Right: Dynamic (QR or Vendor Audit) -->
+              <div id="rightPanel" style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                <!-- Public View -->
+                <div id="publicQrView">
+                  <div id="qrcode" style="background: white; padding: 10px; border-radius: 8px; margin: 0 auto; display: block; width: fit-content;"></div>
+                  <p class="qr-hint" style="text-align: center; margin-top: 10px; font-size: 0.75rem; color: #888;">Product Passport</p>
+                </div>
+
+                <!-- Vendor Only Audit -->
+                <div id="vendorOnlyData" style="display: none; text-align: center;">
+                  <p class="label" style="font-size: 0.65rem; letter-spacing: 1px; color: var(--primary);">QUALITY SCORE</p>
+                  <div style="font-size: 2.5rem; font-weight: 800; color: white;">
+                    <span id="qualityScore">100</span><span style="font-size: 1rem; color: var(--primary);">/100</span>
+                  </div>
+                  <p id="auditConclusion" style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">Perfect cold chain integrity.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Audit Timeline (Vendor Locked) -->
+          <div id="vendorTimelineSection" style="display: none; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; margin-top: 20px;">
+             <p class="label" style="font-size: 0.65rem; letter-spacing: 1px; color: var(--primary); margin-bottom: 15px;">LIVE LOGISTICS MAP</p>
+             <div id="map" style="height: 250px; border-radius: 12px; margin-bottom: 20px; z-index: 1;"></div>
+             <p class="label" style="font-size: 0.65rem; letter-spacing: 1px; color: var(--primary); margin-bottom: 15px;">IMMUTABLE LOGISTICS AUDIT</p>
+             <div id="timeline" class="timeline"></div>
+          </div>
+
+          <!-- Public No-Logs Message -->
+          <div id="publicNoLogs" style="text-align: center; padding: 20px; color: #666; font-size: 0.85rem;">
+            Detailed logistics audit locked. Only authorized vendors can access full conditions.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Scripts ── -->
+  <!-- Note: We use type="module" to support our ES6 imports -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
