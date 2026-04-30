@@ -20,6 +20,24 @@ Instead of relying on a centralized database that can be edited or tampered with
 3. **Heuristic AI Quality Scoring:** The frontend automatically cross-references blockchain temperature logs against a strict master database (`medicines.csv`). If a thermal breach is detected, the "Digital Twin" orb turns red, and the dynamic expiry date is instantly slashed.
 4. **Live Logistics Mapping:** Real-time visual route mapping using Leaflet and OpenStreetMap API to trace the physical journey of the asset.
 
+
+
+## 🏗️ Architecture Diagram
+
+```mermaid
+graph TD
+    A[Manufacturer] -->|Registers Shipment ID| B(Smart Contract)
+    C[Logistics Handler] -->|Records Temp & Location| D{IPFS Storage}
+    D -->|Returns Secure Hash| B
+    B -->|Anchors Data Permanently| E((Blockchain Ledger))
+    
+    E <--> F[TrustChain Dashboard]
+    I[(Safety Thresholds)] -.->|Cross-Reference| F
+    
+    F -->|Public View| G[Consumer Passport & Digital Twin]
+    F -->|Authorized View| H[Vendor Audit & AI Expiry Predictor]
+    F -->|Visual Route| J[Live Logistics Map]
+```
 ---
 
 ## 📸 Screenshots
@@ -54,23 +72,6 @@ Instead of relying on a centralized database that can be edited or tampered with
 </div>
 
 ---
-
-## 🏗️ Architecture Diagram
-
-```mermaid
-graph TD
-    A[Manufacturer] -->|Registers Shipment ID| B(Smart Contract)
-    C[Logistics Handler] -->|Records Temp & Location| D{IPFS Storage}
-    D -->|Returns Secure Hash| B
-    B -->|Anchors Data Permanently| E((Blockchain Ledger))
-    
-    E <--> F[TrustChain Dashboard]
-    I[(Safety Thresholds)] -.->|Cross-Reference| F
-    
-    F -->|Public View| G[Consumer Passport & Digital Twin]
-    F -->|Authorized View| H[Vendor Audit & AI Expiry Predictor]
-    F -->|Visual Route| J[Live Logistics Map]
-```
 
 ---
 
